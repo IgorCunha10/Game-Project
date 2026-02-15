@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class GamePanel extends JPanel {
+public class GamePanel extends JPanel implements Runnable {
 
 
     final int originalTileSize = 16;
@@ -13,6 +13,9 @@ public class GamePanel extends JPanel {
     final int screenWidth = tileSize * maxScreenCol;
     final int screenHeight = tileSize * maxScreenRow;
 
+    Thread gameThread;
+
+
     public GamePanel() {
 
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -22,7 +25,17 @@ public class GamePanel extends JPanel {
 
     }
 
+    public void startGameThread() {
+
+        gameThread = new Thread(this);
+        gameThread.start();
+
+    }
+
+    @Override
+    public void run() {
 
 
 
+    }
 }
