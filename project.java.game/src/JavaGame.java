@@ -19,6 +19,7 @@ public class JavaGame {
         window.setVisible(true);
 
 
+        gamePanel.startGameThread();
 
     }
 
