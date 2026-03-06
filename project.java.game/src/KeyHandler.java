@@ -34,9 +34,7 @@ public class KeyHandler implements KeyListener {
         }
 
         if (code == KeyEvent.VK_D) {
-
-            leftPressed = true;
-
+            rightPressed = true;
         }
 
     }
@@ -66,7 +64,8 @@ public class KeyHandler implements KeyListener {
 
         if (code == KeyEvent.VK_D) {
 
-            leftPressed = false;
+            rightPressed = false;
+
 
         }
 
