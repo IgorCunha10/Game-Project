@@ -20,6 +20,7 @@ public class GamePanel extends JPanel implements Runnable {
     int playerX = 100;
     int playerY = 100;
     int playerSpeed = 4;
+    private Graphics g;
 
 
     public GamePanel() {
@@ -44,58 +45,54 @@ public class GamePanel extends JPanel implements Runnable {
     public void run() {
 
         double drawInterval = 1000000000/FPS;
-        double nextDrawTime = System.nanoTime() + drawInterval;
-
-        while(gameThread != null) {
-
-            long currentTime = System.nanoTime();
-
-            update();
-            repaint();
+        double delta = 0;
+        long lastTime = System.nanoTime();
+        long currentTime;
 
 
+        while (gameThread != null) {
 
+            currentTime = System.nanoTime();
+            delta += (currentTime - lastTime) / drawInterval;
 
-           try {
-               double reaminingTime = nextDrawTime - System.nanoTime();
-               reaminingTime = reaminingTime / 1000000;
+            lastTime = currentTime;
 
+            if(delta >= 1) {
+                update();
+                repaint();
 
-               if (reaminingTime < 0) {
-                   reaminingTime = 0;
-               }
+                delta--;
+            }
 
-               Thread.sleep((long) reaminingTime);
-               nextDrawTime += drawInterval;
-
-           } catch (InterruptedException e) {
-                e.printStackTrace();
         }
 
+
     }
 
-    public void update(){
+        public void update() {
 
-        if (keyH.upPressed == true) {
-            playerY -= playerSpeed;
-        } else if (keyH.downPressed == true) {
-            playerY += playerSpeed;
-        } else if(keyH.leftPressed == true) {
-            playerX -= playerSpeed;
-        } else if (keyH.rightPressed == true){
-            playerX += playerSpeed;
+            if (keyH.upPressed == true) {
+                playerY -= playerSpeed;
+            } else if (keyH.downPressed == true) {
+                playerY += playerSpeed;
+            } else if (keyH.leftPressed == true) {
+                playerX -= playerSpeed;
+            } else if (keyH.rightPressed == true) {
+                playerX += playerSpeed;
+            }
+
         }
 
+        public void paintComponent (Graphics g){
+
+            super.paintComponent(g);
+            Graphics2D g2 = (Graphics2D)g;
+
+            g2.setColor(Color.white);
+            g2.fillRect(playerX, playerY, tileSize, tileSize);
+            g2.dispose();
+
+        }
     }
 
-    public void paintComponent(Graphics g) {
 
-        super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D)g;
-
-        g2.setColor(Color.white);
-        g2.fillRect(playerX, playerY, tileSize, tileSize);
-        g2.dispose();
-
-    }
-}
