@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class JavaGame {
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
 
         JFrame window = new JFrame();
 
