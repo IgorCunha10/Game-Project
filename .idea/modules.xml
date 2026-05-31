@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Game-Project.iml" filepath="$PROJECT_DIR$/.idea/Game-Project.iml" />
       <module fileurl="file://$PROJECT_DIR$/project.java.game/JavaGame.iml" filepath="$PROJECT_DIR$/project.java.game/JavaGame.iml" />
-      <module fileurl="file://$PROJECT_DIR$/project.java.game/res/res.iml" filepath="$PROJECT_DIR$/project.java.game/res/res.iml" />
     </modules>
   </component>
 </project>
